@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cuestionario de Fase de Diagnóstico de Igualdad</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f9; color: #333; }
+        .container { max-width: 800px; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin: auto; }
+        h2 { color: #0056b3; }
+        .question { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; }
+        input[type="text"], textarea { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .sub-container { margin-left: 20px; margin-top: 10px; padding-left: 10px; border-left: 2px solid #0056b3; display: none; }
+        .sub-item { margin-bottom: 10px; }
+        button { background: #0056b3; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #003d82; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Cuestionario de Fase de Diagnóstico de Igualdad</h2>
+    <form id="encuestaForm">
+        <div class="question">
+            <label for="nombre">Nombre y Apellidos:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+
+        <!-- P1 a P17: Likert 5 -->
+        <div class="question"><label>1. La igualdad se reconoce como principio básico del Ayto.</label><select name="P1"><option value="">Selecciona...</option><option value="1">1 - Bajo</option><option value="2">2 - Pocas veces</option><option value="3">3 - Bastantes veces</option><option value="4">4 - Alto</option><option value="5">5 - No sabe/no contesta</option></select></div>
+        <div class="question"><label>2. La igualdad es compatible con la filosofía y cultura del Ayto en la actualidad.</label><select name="P2"><option value="">Selecciona...</option><option value="1">1 - Bajo</option><option value="2">2 - Pocas veces</option><option value="3">3 - Bastantes veces</option><option value="4">4 - Alto</option><option value="5">5 - No sabe/no contesta</option></select></div>
+        <div class="question"><label>3. La dirección del Ayto tiene sensibilidad real y compromiso hacia la igualdad de trato y oportunidades entre mujeres y hombres.</label><select name="P3"><option value="">Selecciona...</option><option value="1">1 - Bajo</option><option value="2">2 - Pocas veces</option><option value="3">3 - Bastantes veces</option><option value="4">4 - Alto</option><option value="5">5 - No sabe/no contesta</option></select></div>
+        <div class="question"><label>4. Se valoran las repercusiones que las decisiones estratégicas tienen en las trabajadoras y trabajadores del Ayto.</label><select name="P4"><option value="">Selecciona...</option><option value="1">1 - Bajo</option><option value="2">2 - Pocas veces</option><option value="3">3 - Bastantes veces</option><option value="4">4 - Alto</option><option value="5">5 - No sabe/no contesta</option></select></div>
+        <div class="question"><label>5. Se toman decisiones diferentes en función de si la persona afectada por la decisión es hombre o mujer.</label><select name="P5"><option value="">Selecciona...</option><option value="1">1 - Bajo</option><option value="2">2 - Pocas veces</option><option value="3">3 - Bastantes veces</option><option value="4">4 - Alto</option><option value="5">5 - No sabe/no contesta</option></select></div>
+        <div class="question"><label>6. Se busca la forma de reequilibrar situaciones donde uno de los sexos está subrepresentado.</label><select name="P6"><option value="">Selecciona...</option><option value="1">1 - Bajo</option><option value="2">2 - Pocas veces</option><option value="3">3 - Bastantes veces</option><option value="4">4 - Alto</option><option value="5">5 - No sabe/no contesta</option></select></div>
+        <div class="question"><label>7. Se toman las decisiones en espacios empresariales que garantizan la presencia de todas las personas implicadas, ya sean hombres o mujeres.</label><select name="P7"><option value="">Selecciona...</option><option value="1">1 - Bajo</option><option value="2">2 - Pocas veces</option><option value="3">3 - Bastantes veces</option><option value="4">4 - Alto</option><option value="5">5 - No sabe/no contesta</option></select></div>
+        <div class="question"><label>8. Se ha informado a la totalidad del Ayto de lo que supone el inicio e implantación del plan.</label><select name="P8"><option value="">Selecciona...</option><option value="1">1 - Bajo</option><option value="2">2 - Pocas veces</option><option value="3">3 - Bastantes veces</option><option value="4">4 - Alto</option><option value="5">5 - No sabe/no contesta</option></select></div>
+        <div class="question"><label>9. La dirección está dispuesta a impulsar el plan incluso aunque suponga cambios sustanciales en la forma de trabajo.</label><select name="P9"><option value="">Selecciona...</option><option value="1">1 - Bajo</option><option value="2">2 - Pocas veces</option><option value="3">3 - Bastantes veces</option><option value="4">4 - Alto</option><option value="5">5 - No sabe/no contesta</option></select></div>
+        <div class="question"><label>10. Se dispone de información suficiente para informar al personal de lo que va a suponer el plan de igualdad en su departamento.</label><select name="P10"><option value="">Selecciona...</option><option value="1">1 - Bajo</option><option value="2">2 - Pocas veces</option><option value="3">3 - Bastantes veces</option><option value="4">4 - Alto</option><option value="5">5 - No sabe/no contesta</option></select></div>
+        <div class="question"><label>11. Hay protocolos de actuación para casos de acoso sexual y/o por razón de sexo.</label><select name="P11"><option value="">Selecciona...</option><option value="1">1 - Bajo</option><option value="2">2 - Pocas veces</option><option value="3">3 - Bastantes veces</option><option value="4">4 - Alto</option><option value="5">5 - No sabe/no contesta</option></select></div>
+        <div class="question"><label>12. Sabrías qué hacer en caso de acoso en el departamento del que eres responsable.</label><select name="P12"><option value="">Selecciona...</option><option value="1">1 - Bajo</option><option value="2">2 - Pocas veces</option><option value="3">3 - Bastantes veces</option><option value="4">4 - Alto</option><option value="5">5 - No sabe/no contesta</option></select></div>
+        <div class="question"><label>13. Tu departamento ofrece las mismas oportunidades a hombres y a mujeres.</label><select name="P13"><option value="">Selecciona...</option><option value="1">1 - Bajo</option><option value="2">2 - Pocas veces</option><option value="3">3 - Bastantes veces</option><option value="4">4 - Alto</option><option value="5">5 - No sabe/no contesta</option></select></div>
+        <div class="question"><label>14. Si hay desequilibrio en el departamento que diriges lo consideras una situación a corregir.</label><select name="P14"><option value="">Selecciona...</option><option value="1">1 - Bajo</option><option value="2">2 - Pocas veces</option><option value="3">3 - Bastantes veces</option><option value="4">4 - Alto</option><option value="5">5 - No sabe/no contesta</option></select></div>
+        <div class="question"><label>15. La igualdad está en consonancia con los objetivos de tu departamento.</label><select name="P15"><option value="">Selecciona...</option><option value="1">1 - Bajo</option><option value="2">2 - Pocas veces</option><option value="3">3 - Bastantes veces</option><option value="4">4 - Alto</option><option value="5">5 - No sabe/no contesta</option></select></div>
+        <div class="question"><label>16. Consideras necesario un plan de igualdad en el Ayto.</label><select name="P16"><option value="">Selecciona...</option><option value="1">1 - Bajo</option><option value="2">2 - Pocas veces</option><option value="3">3 - Bastantes veces</option><option value="4">4 - Alto</option><option value="5">5 - No sabe/no contesta</option></select></div>
+        <div class="question"><label>17. Consideras que el plan de igualdad aportará valor a tu departamento.</label><select name="P17"><option value="">Selecciona...</option><option value="1">1 - Bajo</option><option value="2">2 - Pocas veces</option><option value="3">3 - Bastantes veces</option><option value="4">4 - Alto</option><option value="5">5 - No sabe/no contesta</option></select></div>
+
+        <!-- P18: Abierta Doble (3 necesidades y 3 medidas) -->
+        <div class="question">
+            <label>18. Menciona, por favor, los tres aspectos fundamentales en los que crees que habría que trabajar en materia de igualdad:</label>
+            <p>Necesidades y deficiencias:</p>
+            1. <input type="text" name="P18_N1"><br><br>
+            2. <input type="text" name="P18_N2"><br><br>
+            3. <input type="text" name="P18_N3"><br><br>
+            <p>Medidas a adoptar:</p>
+            1. <input type="text" name="P18_M1"><br><br>
+            2. <input type="text" name="P18_M2"><br><br>
+            3. <input type="text" name="P18_M3">
+        </div>
+
+        <!-- P19: Razones de feminización (Sí/No) -->
+        <div class="question">
+            <label>19. ¿Qué razones crees que justifican la feminización de tu empresa?</label>
+            <div class="sub-item">El sector y tipo de trabajo es más demandado por mujeres: 
+                <label><input type="radio" name="P19_1" value="Si"> Sí</label>
+                <label><input type="radio" name="P19_1" value="No"> No</label>
+            </div>
+            <div class="sub-item">El Ayto se inclina más por contratar mujeres por costumbre social: 
+                <label><input type="radio" name="P19_2" value="Si"> Sí</label>
+                <label><input type="radio" name="P19_2" value="No"> No</label>
+            </div>
+            <div class="sub-item">Por cualidades específicas de las mujeres para el desempeño: 
+                <label><input type="radio" name="P19_3" value="Si"> Sí</label>
+                <label><input type="radio" name="P19_3" value="No"> No</label>
+            </div>
+            <div class="sub-item">Porque los costes salariales de las mujeres podrían ser más bajos: 
+                <label><input type="radio" name="P19_4" value="Si"> Sí</label>
+                <label><input type="radio" name="P19_4" value="No"> No</label>
+            </div>
+            <div class="sub-item">Por malas experiencias en contratación con hombres: 
+                <label><input type="radio" name="P19_5" value="Si"> Sí</label>
+                <label><input type="radio" name="P19_5" value="No"> No</label>
+            </div>
+            <div class="sub-item">Por falta de perfiles con la formación requerida: 
+                <label><input type="radio" name="P19_6" value="Si"> Sí</label>
+                <label><input type="radio" name="P19_6" value="No"> No</label>
+            </div>
+            <div class="sub-item">Otras: 
+                <label><input type="radio" name="P19_7_sino" value="Si" onclick="toggleOtras(true)"> Sí</label>
+                <label><input type="radio" name="P19_7_sino" value="No" onclick="toggleOtras(false)"> No</label>
+                <div id="div_p19_otra" style="display:none; margin-top:5px;"><input type="text" name="P19_7" placeholder="Especificar otra razón..."></div>
+            </div>
+        </div>
+
+        <!-- P20 y P21 -->
+        <div class="question">
+            <label>20. ¿Pueden los hombres acceder a puestos directivos en igualdad de trato y oportunidades que las mujeres del Ayto?</label>
+            <label><input type="radio" name="P20" value="Si"> Sí</label>
+            <label><input type="radio" name="P20" value="No"> No</label>
+        </div>
+        <div class="question">
+            <label>21. ¿Pueden las mujeres acceder a puestos directivos en igualdad de trato y oportunidades que los hombres del Ayto?</label>
+            <label><input type="radio" name="P21" value="Si"> Sí</label>
+            <label><input type="radio" name="P21" value="No"> No</label>
+        </div>
+
+        <!-- P22: Promoción mujeres con condicionales -->
+        <div class="question">
+            <label>22. ¿Consideras que las mujeres de tu empresa tienen menos oportunidades de promoción que los hombres?</label>
+            <label><input type="radio" name="P22_Principal" value="Si" onclick="togglePuestos('mujer', true)"> Sí</label>
+            <label><input type="radio" name="P22_Principal" value="No" onclick="togglePuestos('mujer', false)"> No</label>
+            <div id="sub_mujer" class="sub-container">
+                <p>¿En qué puestos especialmente?</p>
+                Administrativos: <label><input type="radio" name="P22_Admin" value="Si"> Sí</label> <label><input type="radio" name="P22_Admin" value="No"> No</label><br>
+                Técnicos: <label><input type="radio" name="P22_Tec" value="Si"> Sí</label> <label><input type="radio" name="P22_Tec" value="No"> No</label><br>
+                Operarios/peones: <label><input type="radio" name="P22_Op" value="Si"> Sí</label> <label><input type="radio" name="P22_Op" value="No"> No</label><br>
+                Mandos intermedios: <label><input type="radio" name="P22_Man" value="Si"> Sí</label> <label><input type="radio" name="P22_Man" value="No"> No</label><br>
+                Dirección: <label><input type="radio" name="P22_Dir" value="Si"> Sí</label> <label><input type="radio" name="P22_Dir" value="No"> No</label>
+            </div>
+        </div>
+
+        <!-- P23: Promoción hombres con condicionales -->
+        <div class="question">
+            <label>23. ¿Consideras que los hombres de tu empresa tienen menos oportunidades de promoción?</label>
+            <label><input type="radio" name="P23_Principal" value="Si" onclick="togglePuestos('hombre', true)"> Sí</label>
+            <label><input type="radio" name="P23_Principal" value="No" onclick="togglePuestos('hombre', false)"> No</label>
+            <div id="sub_hombre" class="sub-container">
+                <p>¿En qué puestos especialmente?</p>
+                Administrativos: <label><input type="radio" name="P23_Admin" value="Si"> Sí</label> <label><input type="radio" name="P23_Admin" value="No"> No</label><br>
+                Técnicos: <label><input type="radio" name="P23_Tec" value="Si"> Sí</label> <label><input type="radio" name="P23_Tec" value="No"> No</label><br>
+                Operarios/peones: <label><input type="radio" name="P23_Op" value="Si"> Sí</label> <label><input type="radio" name="P23_Op" value="No"> No</label><br>
+                Mandos intermedios: <label><input type="radio" name="P23_Man" value="Si"> Sí</label> <label><input type="radio" name="P23_Man" value="No"> No</label><br>
+                Dirección: <label><input type="radio" name="P23_Dir" value="Si"> Sí</label> <label><input type="radio" name="P23_Dir" value="No"> No</label>
+            </div>
+        </div>
+
+        <!-- P24 y P25 -->
+        <div class="question">
+            <label>24. ¿Crees necesario realizar acciones positivas para aumentar el número de mujeres en los puestos de decisión o mando en el Ayto?</label>
+            <label><input type="radio" name="P24" value="Si"> Sí</label>
+            <label><input type="radio" name="P24" value="No"> No</label>
+        </div>
+        <div class="question">
+            <label>25. ¿Crees necesario realizar acciones positivas para aumentar el número de hombres en los puestos de decisión o mando en el Ayto?</label>
+            <label><input type="radio" name="P25" value="Si"> Sí</label>
+            <label><input type="radio" name="P25" value="No"> No</label>
+        </div>
+
+        <!-- P26: Observaciones -->
+        <div class="question">
+            <label>26. Observaciones: Escribe aquí cualquier observación que te haya surgido en relación al cuestionario</label>
+            <textarea name="P26" rows="3"></textarea>
+        </div>
+
+        <button type="submit">Enviar Respuestas</button>
+    </form>
+</div>
+
+<script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxHW6gMX50MQ2KXYB1xInI_hJNiQ5EwPE2kE5SrFyd16nn8NKi2A80QyYCn37uzvTiT/exec";
+
+    function toggleOtras(mostrar) {
+        document.getElementById("div_p19_otra").style.display = mostrar ? "block" : "none";
+    }
+
+    function togglePuestos(tipo, mostrar) {
+        document.getElementById("sub_" + tipo).style.display = mostrar ? "block" : "none";
+    }
+
+    document.getElementById("encuestaForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        let formData = new FormData(this);
+        let data = { nombre: formData.get("nombre"), respuestas: {} };
+
+        formData.forEach((value, key) => {
+            if(key !== "nombre") data.respuestas[key] = value;
+        });
+
+        fetch(SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            body: JSON.stringify(data)
+        }).then(() => {
+            alert("¡Encuesta enviada con éxito!");
+            location.reload();
+        }).catch(err => alert("Error al enviar los datos"));
+    });
+</script>
+</body>
+</html>
