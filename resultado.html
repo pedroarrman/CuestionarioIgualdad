@@ -71,19 +71,24 @@
         .then(responseObj => {
             document.getElementById("loading").style.display = "none";
             
+            // Verificamos la estructura recibida
+            console.log("Datos recibidos del servidor:", responseObj);
+
             let data = responseObj.respuestas;
-            mapaTextos = responseObj.mapaTextos;
+            mapaTextos = responseObj.mapaTextos || {};
 
             if (!data || data.length <= 1) {
-                document.querySelector(".container").innerHTML += "<p style='text-align:center;'>No hay respuestas registradas todavía.</p>";
+                document.getElementById("contentArea").style.display = "block";
+                document.getElementById("informeContainer").innerHTML = "<p class='placeholder-msg'>No hay respuestas registradas todavía.</p>";
                 return;
             }
 
             globalData = data;
-            headers = data[0];
+            headers = data[0]; // Cabeceras en la fila 0
 
             let select = document.getElementById("personaSelect");
             
+            // Rellenar el desplegable con los nombres (Columna B / Índice 1)
             for (let i = 1; i < data.length; i++) {
                 let nombrePersona = data[i][1];
                 if (nombrePersona) {
@@ -98,7 +103,7 @@
         })
         .catch(err => {
             document.getElementById("loading").innerText = "Error al cargar los resultados.";
-            console.error(err);
+            console.error("Error en fetch:", err);
         });
 
     function mostrarInformePersona() {
@@ -120,11 +125,12 @@
 
         metaDiv.innerHTML = `<strong>Participante:</strong> ${nombre}<br><strong>Fecha de envío:</strong> ${marcaTemporal}`;
 
+        // Recorrer desde la columna 2 en adelante (las preguntas)
         for (let j = 2; j < headers.length; j++) {
             let codigoPregunta = headers[j];
             let respuestaTexto = filaDatos[j];
 
-            if (respuestaTexto === undefined || respuestaTexto === "") {
+            if (respuestaTexto === undefined || respuestaTexto === "" || respuestaTexto === null) {
                 respuestaTexto = "<em>No respondido / No aplica</em>";
             }
 
