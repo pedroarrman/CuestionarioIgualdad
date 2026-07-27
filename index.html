@@ -6,19 +6,26 @@
     <style>
         body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f9; color: #333; }
         .container { max-width: 800px; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin: auto; }
-        h2 { color: #0056b3; }
+        .header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        h2 { color: #0056b3; margin: 0; }
+        .btn-nav { background: #6c757d; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; font-size: 14px; }
+        .btn-nav:hover { background: #5a6268; }
         .question { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
         label { display: block; margin-bottom: 8px; font-weight: bold; }
         input[type="text"], textarea { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
         .sub-container { margin-left: 20px; margin-top: 10px; padding-left: 10px; border-left: 2px solid #0056b3; display: none; }
         .sub-item { margin-bottom: 10px; }
-        button { background: #0056b3; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
-        button:hover { background: #003d82; }
+        button[type="submit"] { background: #0056b3; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button[type="submit"]:hover { background: #003d82; }
     </style>
 </head>
 <body>
 <div class="container">
-    <h2>Cuestionario de Fase de Diagnóstico de Igualdad</h2>
+    <div class="header-flex">
+        <h2>Cuestionario de Fase de Diagnóstico de Igualdad</h2>
+        <a href="resultado.html" class="btn-nav">Ver Resultados 📊</a>
+    </div>
+    
     <form id="encuestaForm">
         <div class="question">
             <label for="nombre">Nombre y Apellidos:</label>
