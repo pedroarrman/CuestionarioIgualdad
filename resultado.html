@@ -2,30 +2,44 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informe Individual - Cuestionario de Igualdad</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f9; color: #333; }
-        .container { max-width: 800px; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin: auto; }
-        .header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-        h2 { color: #0056b3; margin: 0; }
-        .btn-nav { background: #0056b3; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; font-size: 14px; }
+        * { box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; margin: 0; padding: 15px; background: #f4f4f9; color: #333; }
+        .container { max-width: 800px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin: auto; }
+        .header-flex { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+        h2 { color: #0056b3; margin: 0; font-size: 22px; }
+        .btn-nav { background: #0056b3; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; font-size: 14px; text-align: center; }
         .btn-nav:hover { background: #003d82; }
-        .selector-box { background: #eef2f7; padding: 15px; border-radius: 6px; margin-bottom: 25px; display: flex; align-items: center; gap: 15px; }
-        .selector-box label { font-weight: bold; color: #333; }
-        .selector-box select { padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; flex-grow: 1; background: #fff; }
+        .selector-box { background: #eef2f7; padding: 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px; }
+        .selector-box label { font-weight: bold; color: #333; font-size: 14px; }
+        .selector-box select { padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; background: #fff; width: 100%; }
         .loading { text-align: center; font-style: italic; color: #666; margin-top: 20px; }
         
-        .qa-card { background: #fff; border: 1px solid #e1e4e8; border-left: 4px solid #0056b3; border-radius: 4px; padding: 15px 20px; margin-bottom: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-        .qa-question { font-size: 14px; color: #555; margin-bottom: 6px; font-weight: bold; }
-        .qa-answer { font-size: 15px; color: #0056b3; background: #f8fafc; padding: 8px 12px; border-radius: 4px; border: 1px solid #edf2f7; display: inline-block; width: 100%; box-sizing: border-box; }
-        .meta-info { font-size: 13px; color: #666; margin-bottom: 20px; font-style: italic; }
-        .placeholder-msg { text-align: center; color: #888; padding: 40px; font-size: 16px; }
+        .qa-card { background: #fff; border: 1px solid #e1e4e8; border-left: 4px solid #0056b3; border-radius: 4px; padding: 15px; margin-bottom: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .qa-question { font-size: 13px; color: #555; margin-bottom: 6px; font-weight: bold; }
+        .qa-answer { font-size: 14px; color: #0056b3; background: #f8fafc; padding: 10px; border-radius: 4px; border: 1px solid #edf2f7; width: 100%; word-break: break-word; }
+        .meta-info { font-size: 13px; color: #666; margin-bottom: 20px; font-style: italic; background: #fdfdfe; padding: 10px; border: 1px solid #eee; border-radius: 4px; }
+        .placeholder-msg { text-align: center; color: #888; padding: 30px 10px; font-size: 15px; }
+
+        @media (min-width: 600px) {
+            body { padding: 40px; }
+            .container { padding: 30px; }
+            .header-flex { flex-direction: row; justify-content: space-between; align-items: center; }
+            h2 { font-size: 24px; }
+            .selector-box { flex-direction: row; align-items: center; gap: 15px; }
+            .selector-box select { flex-grow: 1; }
+            .qa-card { padding: 15px 20px; }
+            .qa-question { font-size: 14px; }
+            .qa-answer { font-size: 15px; }
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="header-flex">
-        <h2>Informe Individual de Respuestas</h2>
+        <h2>Informe Individual</h2>
         <a href="index.html" class="btn-nav">⬅️ Volver al Cuestionario</a>
     </div>
 
@@ -33,7 +47,7 @@
 
     <div id="contentArea" style="display: none;">
         <div class="selector-box">
-            <label for="personaSelect">Seleccionar Persona:</label>
+            <label for="personaSelect">Participante:</label>
             <select id="personaSelect" onchange="mostrarInformePersona()">
                 <option value="">-- Elige un participante --</option>
             </select>
@@ -57,7 +71,6 @@
         .then(responseObj => {
             document.getElementById("loading").style.display = "none";
             
-            // Extraemos los datos estructurados del backend
             let data = responseObj.respuestas;
             mapaTextos = responseObj.mapaTextos;
 
@@ -67,11 +80,10 @@
             }
 
             globalData = data;
-            headers = data[0]; // Fila 1: Cabeceras
+            headers = data[0];
 
             let select = document.getElementById("personaSelect");
             
-            // Rellenar el desplegable con los nombres (Columna B / Índice 1)
             for (let i = 1; i < data.length; i++) {
                 let nombrePersona = data[i][1];
                 if (nombrePersona) {
@@ -106,9 +118,8 @@
         let marcaTemporal = filaDatos[0];
         let nombre = filaDatos[1];
 
-        metaDiv.innerHTML = `<strong>Participante:</strong> ${nombre} &nbsp;|&nbsp; <strong>Fecha de envío:</strong> ${marcaTemporal}`;
+        metaDiv.innerHTML = `<strong>Participante:</strong> ${nombre}<br><strong>Fecha de envío:</strong> ${marcaTemporal}`;
 
-        // Recorrer desde la columna 2 en adelante
         for (let j = 2; j < headers.length; j++) {
             let codigoPregunta = headers[j];
             let respuestaTexto = filaDatos[j];
@@ -117,13 +128,12 @@
                 respuestaTexto = "<em>No respondido / No aplica</em>";
             }
 
-            // Consultamos el enunciado directamente del mapa obtenido de Google Sheets
             let enunciadoReal = mapaTextos[codigoPregunta] || codigoPregunta;
 
             let card = document.createElement("div");
             card.className = "qa-card";
             card.innerHTML = `
-                <div class="qa-question">${enunciadoReal} <span style="color:#aaa; font-weight:normal; font-size:12px;">(${codigoPregunta})</span></div>
+                <div class="qa-question">${enunciadoReal} <span style="color:#aaa; font-weight:normal; font-size:11px;">(${codigoPregunta})</span></div>
                 <div class="qa-answer">${respuestaTexto}</div>
             `;
             informeDiv.appendChild(card);
