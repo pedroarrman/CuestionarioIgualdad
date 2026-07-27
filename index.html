@@ -2,21 +2,33 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuestionario de Fase de Diagnóstico de Igualdad</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f9; color: #333; }
-        .container { max-width: 800px; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin: auto; }
-        .header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        h2 { color: #0056b3; margin: 0; }
-        .btn-nav { background: #6c757d; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; font-size: 14px; }
+        * { box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; margin: 0; padding: 15px; background: #f4f4f9; color: #333; }
+        .container { max-width: 800px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin: auto; }
+        .header-flex { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+        h2 { color: #0056b3; margin: 0; font-size: 22px; }
+        .btn-nav { background: #6c757d; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; font-size: 14px; text-align: center; }
         .btn-nav:hover { background: #5a6268; }
         .question { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
-        label { display: block; margin-bottom: 8px; font-weight: bold; }
-        input[type="text"], textarea { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        .sub-container { margin-left: 20px; margin-top: 10px; padding-left: 10px; border-left: 2px solid #0056b3; display: none; }
-        .sub-item { margin-bottom: 10px; }
-        button[type="submit"] { background: #0056b3; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; font-size: 15px; }
+        select, input[type="text"], textarea { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; background: #fff; }
+        .sub-container { margin-left: 10px; margin-top: 10px; padding-left: 10px; border-left: 2px solid #0056b3; display: none; }
+        .sub-item { margin-bottom: 12px; font-size: 14px; }
+        .radio-group { display: flex; gap: 15px; margin-top: 5px; align-items: center; }
+        .radio-group label { font-weight: normal; margin-bottom: 0; display: inline-flex; align-items: center; gap: 5px; cursor: pointer; }
+        button[type="submit"] { background: #0056b3; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; width: 100%; margin-top: 10px; }
         button[type="submit"]:hover { background: #003d82; }
+
+        @media (min-width: 600px) {
+            body { padding: 40px; }
+            .container { padding: 30px; }
+            .header-flex { flex-direction: row; justify-content: space-between; align-items: center; }
+            h2 { font-size: 24px; }
+            button[type="submit"] { width: auto; }
+        }
     </style>
 </head>
 <body>
@@ -51,111 +63,98 @@
         <div class="question"><label>16. Consideras necesario un plan de igualdad en el Ayto.</label><select name="P16"><option value="">Selecciona...</option><option value="1">1 - Bajo</option><option value="2">2 - Pocas veces</option><option value="3">3 - Bastantes veces</option><option value="4">4 - Alto</option><option value="5">5 - No sabe/no contesta</option></select></div>
         <div class="question"><label>17. Consideras que el plan de igualdad aportará valor a tu departamento.</label><select name="P17"><option value="">Selecciona...</option><option value="1">1 - Bajo</option><option value="2">2 - Pocas veces</option><option value="3">3 - Bastantes veces</option><option value="4">4 - Alto</option><option value="5">5 - No sabe/no contesta</option></select></div>
 
-        <!-- P18: Abierta Doble (3 necesidades y 3 medidas) -->
+        <!-- P18 -->
         <div class="question">
             <label>18. Menciona, por favor, los tres aspectos fundamentales en los que crees que habría que trabajar en materia de igualdad:</label>
-            <p>Necesidades y deficiencias:</p>
+            <p style="font-weight: bold; margin-bottom: 5px;">Necesidades y deficiencias:</p>
             1. <input type="text" name="P18_N1"><br><br>
             2. <input type="text" name="P18_N2"><br><br>
             3. <input type="text" name="P18_N3"><br><br>
-            <p>Medidas a adoptar:</p>
+            <p style="font-weight: bold; margin-bottom: 5px;">Medidas a adoptar:</p>
             1. <input type="text" name="P18_M1"><br><br>
             2. <input type="text" name="P18_M2"><br><br>
             3. <input type="text" name="P18_M3">
         </div>
 
-        <!-- P19: Razones de feminización (Sí/No) -->
+        <!-- P19 -->
         <div class="question">
             <label>19. ¿Qué razones crees que justifican la feminización de tu empresa?</label>
             <div class="sub-item">El sector y tipo de trabajo es más demandado por mujeres: 
-                <label><input type="radio" name="P19_1" value="Si"> Sí</label>
-                <label><input type="radio" name="P19_1" value="No"> No</label>
+                <div class="radio-group"><label><input type="radio" name="P19_1" value="Si"> Sí</label><label><input type="radio" name="P19_1" value="No"> No</label></div>
             </div>
             <div class="sub-item">El Ayto se inclina más por contratar mujeres por costumbre social: 
-                <label><input type="radio" name="P19_2" value="Si"> Sí</label>
-                <label><input type="radio" name="P19_2" value="No"> No</label>
+                <div class="radio-group"><label><input type="radio" name="P19_2" value="Si"> Sí</label><label><input type="radio" name="P19_2" value="No"> No</label></div>
             </div>
             <div class="sub-item">Por cualidades específicas de las mujeres para el desempeño: 
-                <label><input type="radio" name="P19_3" value="Si"> Sí</label>
-                <label><input type="radio" name="P19_3" value="No"> No</label>
+                <div class="radio-group"><label><input type="radio" name="P19_3" value="Si"> Sí</label><label><input type="radio" name="P19_3" value="No"> No</label></div>
             </div>
             <div class="sub-item">Porque los costes salariales de las mujeres podrían ser más bajos: 
-                <label><input type="radio" name="P19_4" value="Si"> Sí</label>
-                <label><input type="radio" name="P19_4" value="No"> No</label>
+                <div class="radio-group"><label><input type="radio" name="P19_4" value="Si"> Sí</label><label><input type="radio" name="P19_4" value="No"> No</label></div>
             </div>
             <div class="sub-item">Por malas experiencias en contratación con hombres: 
-                <label><input type="radio" name="P19_5" value="Si"> Sí</label>
-                <label><input type="radio" name="P19_5" value="No"> No</label>
+                <div class="radio-group"><label><input type="radio" name="P19_5" value="Si"> Sí</label><label><input type="radio" name="P19_5" value="No"> No</label></div>
             </div>
             <div class="sub-item">Por falta de perfiles con la formación requerida: 
-                <label><input type="radio" name="P19_6" value="Si"> Sí</label>
-                <label><input type="radio" name="P19_6" value="No"> No</label>
+                <div class="radio-group"><label><input type="radio" name="P19_6" value="Si"> Sí</label><label><input type="radio" name="P19_6" value="No"> No</label></div>
             </div>
             <div class="sub-item">Otras: 
-                <label><input type="radio" name="P19_7_sino" value="Si" onclick="toggleOtras(true)"> Sí</label>
-                <label><input type="radio" name="P19_7_sino" value="No" onclick="toggleOtras(false)"> No</label>
-                <div id="div_p19_otra" style="display:none; margin-top:5px;"><input type="text" name="P19_7" placeholder="Especificar otra razón..."></div>
+                <div class="radio-group"><label><input type="radio" name="P19_7_sino" value="Si" onclick="toggleOtras(true)"> Sí</label><label><input type="radio" name="P19_7_sino" value="No" onclick="toggleOtras(false)"> No</label></div>
+                <div id="div_p19_otra" style="display:none; margin-top:8px;"><input type="text" name="P19_7" placeholder="Especificar otra razón..."></div>
             </div>
         </div>
 
         <!-- P20 y P21 -->
         <div class="question">
             <label>20. ¿Pueden los hombres acceder a puestos directivos en igualdad de trato y oportunidades que las mujeres del Ayto?</label>
-            <label><input type="radio" name="P20" value="Si"> Sí</label>
-            <label><input type="radio" name="P20" value="No"> No</label>
+            <div class="radio-group"><label><input type="radio" name="P20" value="Si"> Sí</label><label><input type="radio" name="P20" value="No"> No</label></div>
         </div>
         <div class="question">
             <label>21. ¿Pueden las mujeres acceder a puestos directivos en igualdad de trato y oportunidades que los hombres del Ayto?</label>
-            <label><input type="radio" name="P21" value="Si"> Sí</label>
-            <label><input type="radio" name="P21" value="No"> No</label>
+            <div class="radio-group"><label><input type="radio" name="P21" value="Si"> Sí</label><label><input type="radio" name="P21" value="No"> No</label></div>
         </div>
 
-        <!-- P22: Promoción mujeres con condicionales -->
+        <!-- P22 -->
         <div class="question">
             <label>22. ¿Consideras que las mujeres de tu empresa tienen menos oportunidades de promoción que los hombres?</label>
-            <label><input type="radio" name="P22_Principal" value="Si" onclick="togglePuestos('mujer', true)"> Sí</label>
-            <label><input type="radio" name="P22_Principal" value="No" onclick="togglePuestos('mujer', false)"> No</label>
+            <div class="radio-group"><label><input type="radio" name="P22_Principal" value="Si" onclick="togglePuestos('mujer', true)"> Sí</label><label><input type="radio" name="P22_Principal" value="No" onclick="togglePuestos('mujer', false)"> No</label></div>
             <div id="sub_mujer" class="sub-container">
-                <p>¿En qué puestos especialmente?</p>
-                Administrativos: <label><input type="radio" name="P22_Admin" value="Si"> Sí</label> <label><input type="radio" name="P22_Admin" value="No"> No</label><br>
-                Técnicos: <label><input type="radio" name="P22_Tec" value="Si"> Sí</label> <label><input type="radio" name="P22_Tec" value="No"> No</label><br>
-                Operarios/peones: <label><input type="radio" name="P22_Op" value="Si"> Sí</label> <label><input type="radio" name="P22_Op" value="No"> No</label><br>
-                Mandos intermedios: <label><input type="radio" name="P22_Man" value="Si"> Sí</label> <label><input type="radio" name="P22_Man" value="No"> No</label><br>
-                Dirección: <label><input type="radio" name="P22_Dir" value="Si"> Sí</label> <label><input type="radio" name="P22_Dir" value="No"> No</label>
+                <p style="font-weight: bold;">¿En qué puestos especialmente?</p>
+                <div class="sub-item">Administrativos: <div class="radio-group"><label><input type="radio" name="P22_Admin" value="Si"> Sí</label><label><input type="radio" name="P22_Admin" value="No"> No</label></div></div>
+                <div class="sub-item">Técnicos: <div class="radio-group"><label><input type="radio" name="P22_Tec" value="Si"> Sí</label><label><input type="radio" name="P22_Tec" value="No"> No</label></div></div>
+                <div class="sub-item">Operarios/peones: <div class="radio-group"><label><input type="radio" name="P22_Op" value="Si"> Sí</label><label><input type="radio" name="P22_Op" value="No"> No</label></div></div>
+                <div class="sub-item">Mandos intermedios: <div class="radio-group"><label><input type="radio" name="P22_Man" value="Si"> Sí</label><label><input type="radio" name="P22_Man" value="No"> No</label></div></div>
+                <div class="sub-item">Dirección: <div class="radio-group"><label><input type="radio" name="P22_Dir" value="Si"> Sí</label><label><input type="radio" name="P22_Dir" value="No"> No</label></div></div>
             </div>
         </div>
 
-        <!-- P23: Promoción hombres con condicionales -->
+        <!-- P23 -->
         <div class="question">
             <label>23. ¿Consideras que los hombres de tu empresa tienen menos oportunidades de promoción?</label>
-            <label><input type="radio" name="P23_Principal" value="Si" onclick="togglePuestos('hombre', true)"> Sí</label>
-            <label><input type="radio" name="P23_Principal" value="No" onclick="togglePuestos('hombre', false)"> No</label>
+            <div class="radio-group"><label><input type="radio" name="P23_Principal" value="Si" onclick="togglePuestos('hombre', true)"> Sí</label><label><input type="radio" name="P23_Principal" value="No" onclick="togglePuestos('hombre', false)"> No</label></div>
             <div id="sub_hombre" class="sub-container">
-                <p>¿En qué puestos especialmente?</p>
-                Administrativos: <label><input type="radio" name="P23_Admin" value="Si"> Sí</label> <label><input type="radio" name="P23_Admin" value="No"> No</label><br>
-                Técnicos: <label><input type="radio" name="P23_Tec" value="Si"> Sí</label> <label><input type="radio" name="P23_Tec" value="No"> No</label><br>
-                Operarios/peones: <label><input type="radio" name="P23_Op" value="Si"> Sí</label> <label><input type="radio" name="P23_Op" value="No"> No</label><br>
-                Mandos intermedios: <label><input type="radio" name="P23_Man" value="Si"> Sí</label> <label><input type="radio" name="P23_Man" value="No"> No</label><br>
-                Dirección: <label><input type="radio" name="P23_Dir" value="Si"> Sí</label> <label><input type="radio" name="P23_Dir" value="No"> No</label>
+                <p style="font-weight: bold;">¿En qué puestos especialmente?</p>
+                <div class="sub-item">Administrativos: <div class="radio-group"><label><input type="radio" name="P23_Admin" value="Si"> Sí</label><label><input type="radio" name="P23_Admin" value="No"> No</label></div></div>
+                <div class="sub-item">Técnicos: <div class="radio-group"><label><input type="radio" name="P23_Tec" value="Si"> Sí</label><label><input type="radio" name="P23_Tec" value="No"> No</label></div></div>
+                <div class="sub-item">Operarios/peones: <div class="radio-group"><label><input type="radio" name="P23_Op" value="Si"> Sí</label><label><input type="radio" name="P23_Op" value="No"> No</label></div></div>
+                <div class="sub-item">Mandos intermedios: <div class="radio-group"><label><input type="radio" name="P23_Man" value="Si"> Sí</label><label><input type="radio" name="P23_Man" value="No"> No</label></div></div>
+                <div class="sub-item">Dirección: <div class="radio-group"><label><input type="radio" name="P23_Dir" value="Si"> Sí</label><label><input type="radio" name="P23_Dir" value="No"> No</label></div></div>
             </div>
         </div>
 
         <!-- P24 y P25 -->
         <div class="question">
             <label>24. ¿Crees necesario realizar acciones positivas para aumentar el número de mujeres en los puestos de decisión o mando en el Ayto?</label>
-            <label><input type="radio" name="P24" value="Si"> Sí</label>
-            <label><input type="radio" name="P24" value="No"> No</label>
+            <div class="radio-group"><label><input type="radio" name="P24" value="Si"> Sí</label><label><input type="radio" name="P24" value="No"> No</label></div>
         </div>
         <div class="question">
             <label>25. ¿Crees necesario realizar acciones positivas para aumentar el número de hombres en los puestos de decisión o mando en el Ayto?</label>
-            <label><input type="radio" name="P25" value="Si"> Sí</label>
-            <label><input type="radio" name="P25" value="No"> No</label>
+            <div class="radio-group"><label><input type="radio" name="P25" value="Si"> Sí</label><label><input type="radio" name="P25" value="No"> No</label></div>
         </div>
 
-        <!-- P26: Observaciones -->
+        <!-- P26 -->
         <div class="question">
             <label>26. Observaciones: Escribe aquí cualquier observación que te haya surgido en relación al cuestionario</label>
-            <textarea name="P26" rows="3"></textarea>
+            <textarea name="P26" rows="4"></textarea>
         </div>
 
         <button type="submit">Enviar Respuestas</button>
