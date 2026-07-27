@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados - Cuestionario de Diagnóstico de Igualdad</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f9; color: #333; }
+        .container { max-width: 1000px; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin: auto; }
+        h2 { color: #0056b3; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 14px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #0056b3; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .loading { text-align: center; font-style: italic; color: #666; margin-top: 20px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Resultados del Cuestionario de Igualdad</h2>
+    <div id="loading" class="loading">Cargando resultados...</div>
+    <div style="overflow-x: auto;">
+        <table id="resultsTable" style="display: none;">
+            <thead id="tableHeader"></thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxHW6gMX50MQ2KXYB1xInI_hJNiQ5EwPE2kE5SrFyd16nn8NKi2A80QyYCn37uzvTiT/exec";
+
+    fetch(SCRIPT_URL)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("loading").style.display = "none";
+            if (!data || data.length === 0) {
+                document.querySelector(".container").innerHTML += "<p>No hay respuestas registradas todavía.</p>";
+                return;
+            }
+
+            let table = document.getElementById("resultsTable");
+            let thead = document.getElementById("tableHeader");
+            let tbody = document.getElementById("tableBody");
+
+            // Cabeceras (Fila 1)
+            let headerRow = document.createElement("tr");
+            data[0].forEach(headerText => {
+                let th = document.createElement("th");
+                th.innerText = headerText;
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+
+            // Filas de datos (A partir de la Fila 2)
+            for (let i = 1; i < data.length; i++) {
+                let row = document.createElement("tr");
+                data[i].forEach(cellText => {
+                    let td = document.createElement("td");
+                    td.innerText = cellText;
+                    row.appendChild(td);
+                });
+                tbody.appendChild(row);
+            }
+
+            table.style.display = "table";
+        })
+        .catch(err => {
+            document.getElementById("loading").innerText = "Error al cargar los resultados.";
+            console.error(err);
+        });
+</script>
+</body>
+</html>
